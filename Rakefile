@@ -18,7 +18,7 @@ def download_file(url)
     request = Net::HTTP::Get.new uri
 
     http.request request do |response|
-      open "/tmp#{filename}", 'w' do |io|
+      open "/tmp/#{filename}", 'w' do |io|
         response.read_body do |chunk|
           io.write chunk
         end
