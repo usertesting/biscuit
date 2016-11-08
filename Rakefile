@@ -1,4 +1,5 @@
-require "bundler/gem_tasks"
+require 'bundler'
+require 'bundler/gem_tasks'
 require 'open-uri'
 
 UPSTREAM_VERSION = '0.1.2'
