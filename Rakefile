@@ -1,6 +1,7 @@
 require "bundler/gem_tasks"
 require 'open-uri'
-require_relative 'lib/biscuit/version'
+
+UPSTREAM_VERSION = '0.1.2'
 
 def fetch(release_url)
   tgz_path = download_file(release_url)
@@ -19,7 +20,7 @@ end
 
 task :default do
   platform = Gem::Platform.local
-  base_release_url = "https://github.com/dcoker/biscuit/releases/download/v#{Biscuit::VERSION}/biscuit"
+  base_release_url = "https://github.com/dcoker/biscuit/releases/download/v#{UPSTREAM_VERSION}/biscuit"
 
   if platform.os == 'darwin' && platform.cpu == 'x86_64'
     fetch("#{base_release_url}-darwin_amd64.tgz") 
