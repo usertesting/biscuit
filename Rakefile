@@ -19,7 +19,7 @@ end
 
 task :default do
   platform = Gem::Platform.local
-  base_release_url = "https://github.com/dcoker/biscuit/releases/download/#{Biscuit::VERSION}/biscuit"
+  base_release_url = "https://github.com/dcoker/biscuit/releases/download/v#{Biscuit::VERSION}/biscuit"
 
   if platform.os == 'darwin' && platform.cpu == 'x86_64'
     fetch("#{base_release_url}-darwin_amd64.tgz") 
