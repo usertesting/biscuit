@@ -3,11 +3,10 @@ require 'net/http'
 require_relative 'lib/biscuit/version'
 
 def fetch(release_url)
-  tgz_path       = download_file(release_url)
-  this_gems_path = Gem::Specification.find_by_name('biscuit').gem_dir
+  tgz_path = download_file(release_url)
 
   system("tar -xzf #{tgz_path} -C #{File.dirname(tgz_path)}")
-  system("mv #{File.dirname(tgz_path)}/biscuit #{this_gems_path}/bin/_biscuit")
+  system("mv #{File.dirname(tgz_path)}/biscuit #{__dir__}/bin/_biscuit")
 end
 
 def download_file(url)
