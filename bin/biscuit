@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 
-system("bisquick", *ARGV)
+this_gems_root = Gem::Specification.find_by_name("biscuit").gem_dir
+system("#{this_gems_root}/bin/_biscuit", *ARGV)
 exit $?.exitstatus
