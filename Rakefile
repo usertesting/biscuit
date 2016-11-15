@@ -1,6 +1,6 @@
 require 'open-uri'
 
-UPSTREAM_VERSION = '0.1.2'
+UPSTREAM_VERSION = '0.1.3'
 
 def fetch(release_url)
   tgz_path = download_file(release_url)
