@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
 
 this_gems_root = Gem::Specification.find_by_name("biscuit").gem_dir
+
+# We aren't using Biscuit.run! here because we want output to be streamed as it arrives for interactive use,
+# and we don't care about capturing the result
 system("#{this_gems_root}/bin/_biscuit", *ARGV)
+
 exit $?.exitstatus
