@@ -1,5 +1,8 @@
 require "biscuit/version"
+require "biscuit/secrets_decrypter"
+
 require "open3"
+require "yaml"
 
 module Biscuit
   def self.run!(command)
