@@ -24,7 +24,7 @@ describe Biscuit do
       it "raises an error" do
         expect {
           subject.run!("export -f /tmp/secret.yml")
-        }.to raise_error(Biscuit::ExecutionError)
+        }.to raise_error(Biscuit::ExecutionError, /std_out: secret_key: secret_value std_err: standard error/)
       end
     end
   end

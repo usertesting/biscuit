@@ -21,7 +21,7 @@ describe Biscuit::SecretsDecrypter do
         allow(File).to receive(:exists?).and_return(false)
         expect {
           subject
-        }.to raise_error
+        }.to raise_error(StandardError)
       end
     end
   end
