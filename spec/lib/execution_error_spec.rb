@@ -9,10 +9,18 @@ describe Biscuit::ExecutionError do
     let(:stdout) { "standard out" }
     let(:stderr) { "standard error" }
 
-    let(:subject) { described_class.new(stdout, stderr) }
+    let(:subject) { described_class.new(stderr, stdout) }
 
     it "includes standard out and standard error" do
       expect(subject.message).to eq "std_out: standard out std_err: standard error"
+    end
+
+    context "when stdout is not provided" do
+      let(:subject) { described_class.new(stderr) }
+
+      it "only includes standard error" do
+        expect(subject.message).to eq "std_err: standard error"
+      end
     end
   end
 end

@@ -2,7 +2,7 @@
 
 module Biscuit
   class ExecutionError < StandardError
-    def initialize(stdout, stderr)
+    def initialize(stderr, stdout=nil)
       @stdout = stdout
       @stderr = stderr
       super(message)
