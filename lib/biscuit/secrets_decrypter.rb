@@ -22,11 +22,20 @@ module Biscuit
 
     private
 
-    def secrets
-      return @secrets if defined? @secrets
+    def exported
+      @_exported ||= Biscuit.run!("export -f '#{secrets_file}'")
+    end
 
-      result   = Biscuit.run!("export -f #{secrets_file}")
-      @secrets = YAML.load(result)
+    def secret_lines
+      @_secret_lines ||= exported.split("\n").select { |line| line =~ /\S/ }
+    end
+
+    def secret_pairs
+      @_secret_pairs ||= secret_lines.map { |line| line.split(":").map(&:strip) }
+    end
+
+    def secrets
+      @_secrets ||= Hash[secret_pairs]
     end
   end
 end
