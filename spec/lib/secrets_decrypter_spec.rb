@@ -52,5 +52,25 @@ describe Biscuit::SecretsDecrypter do
       let(:expected_hash) { Hash["secret_key" => "secret_value"] }
       include_examples "translates exported data correctly"
     end
+
+    context "for many key-value pairs" do
+      let(:exported_data) do
+        <<~EXPORTED
+          foo: bar
+          bam: baz
+          one: two
+        EXPORTED
+      end
+
+      let(:expected_hash) do
+        {
+          "foo" => "bar",
+          "bam" => "baz",
+          "one" => "two",
+        }
+      end
+
+      include_examples "translates exported data correctly"
+    end
   end
 end
