@@ -22,10 +22,11 @@ describe Biscuit::SecretsDecrypter do
   describe ".load" do
     shared_examples "translates exported data correctly" do
       let(:decrypter) { described_class.new(secret_file) }
+      before { allow(File).to receive(:exists?).and_return(true) }
       before { allow(Biscuit).to receive(:run!).and_return(exported_data) }
 
       it "executes the correct biscuit command" do
-        expect(Biscuit).to receive(:run!).with("export -f '/tmp/secrets.yml'")
+        expect(Biscuit).to receive(:run!).with("export -f '#{secret_file}'")
         decrypter.load
       end
 
