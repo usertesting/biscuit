@@ -4,51 +4,53 @@ require "spec_helper"
 
 describe Biscuit::SecretsDecrypter do
   let(:secret_file) { "/tmp/secrets.yml" }
-  let(:subject) { described_class.new(secret_file) }
-
-  before do
-    allow(File).to receive(:exists?).and_return(true)
-  end
 
   describe ".new" do
-    it "checks if the file exists" do
-      expect(File).to receive(:exists?)
-      subject
+    subject(:decrypter) { -> { described_class.new(secret_file) } }
+
+    context "when the file exists" do
+      before { allow(File).to receive(:exists?).and_return(true) }
+      it { is_expected.not_to raise_error }
     end
 
-    context "if file doesn't exist" do
-      it "raises an error" do
-        allow(File).to receive(:exists?).and_return(false)
-        expect {
-          subject
-        }.to raise_error(StandardError)
-      end
+    context "when the file doesn't exist" do
+      before { allow(File).to receive(:exists?).and_return(false) }
+      it { is_expected.to raise_error(StandardError, /is not found/) }
     end
   end
 
   describe ".load" do
-    before do
-      allow(Biscuit).to receive(:run!).and_return("secret_key: secret_value")
-    end
+    shared_examples "translates exported data correctly" do
+      let(:decrypter) { described_class.new(secret_file) }
+      before { allow(Biscuit).to receive(:run!).and_return(exported_data) }
 
-    it "executes biscuit command" do
-      expect(Biscuit).to receive(:run!).with("export -f /tmp/secrets.yml")
-      subject.load
-    end
+      it "executes the correct biscuit command" do
+        expect(Biscuit).to receive(:run!).with("export -f /tmp/secrets.yml")
+        decrypter.load
+      end
 
-    it "returns a hash" do
-      expect(subject.load).to eq({"secret_key"=>"secret_value"})
-    end
+      context "when no block is given" do
+        subject(:results) { decrypter.load }
+        it { is_expected.to eq(expected_hash) }
+      end
 
-    context "when a block is given" do
-      it "returns key and value" do
-        my_hash = {}
-        subject.load do |key, value|
-          my_hash[key] = value
+      context "when a block is given" do
+        it "yields each of the expected pairs" do
+          decrypter.load do |k, v|
+            expect(expected_hash).to include(k => v)
+          end
         end
 
-        expect(my_hash).to eq({"secret_key"=>"secret_value"})
+        it "returns the expected hash" do
+          expect(decrypter.load).to eq(expected_hash)
+        end
       end
+    end
+
+    context "for a simple key-value pair" do
+      let(:exported_data) { "secret_key: secret_value" }
+      let(:expected_hash) { Hash["secret_key" => "secret_value"] }
+      include_examples "translates exported data correctly"
     end
   end
 end
