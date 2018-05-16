@@ -72,5 +72,17 @@ describe Biscuit::SecretsDecrypter do
 
       include_examples "translates exported data correctly"
     end
+
+    context "when the keys and values look numeric" do
+      let(:exported_data) { "58: 49" }
+      let(:expected_hash) { Hash["58" => "49"] }
+      include_examples "translates exported data correctly"
+    end
+
+    context "when the values look like arrays" do
+      let(:exported_data) { "foo: 1,2,3,4,5" }
+      let(:expected_hash) { Hash["foo" => "1,2,3,4,5"] }
+      include_examples "translates exported data correctly"
+    end
   end
 end
