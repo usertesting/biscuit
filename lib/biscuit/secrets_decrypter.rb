@@ -22,11 +22,13 @@ module Biscuit
 
     private
 
-    def secrets
-      return @secrets if defined? @secrets
+    def exported
+      @_exported ||= Biscuit.run!("export -f '#{secrets_file}'")
+    end
 
-      result   = Biscuit.run!("export -f #{secrets_file}")
-      @secrets = YAML.load(result)
+    def secrets
+      return @_secrets if defined?(@_secrets)
+      @_secrets = YAML.load(exported)
     end
   end
 end
