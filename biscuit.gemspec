@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Ruby wrapper for biscuit (https://github.com/dcoker/biscuit).}
   spec.homepage      = "https://github.com/usertesting/biscuit"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features|doc)/}) }
   spec.bindir        = "bin"
   spec.executables   = 'biscuit'
   spec.require_paths = ["lib"]

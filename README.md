@@ -2,6 +2,7 @@
 
 [![Travis](https://img.shields.io/travis/usertesting/biscuit?style=for-the-badge)](https://travis-ci.org/usertesting/biscuit) [![Coveralls github](https://img.shields.io/coveralls/github/usertesting/biscuit?style=for-the-badge)](https://coveralls.io/github/usertesting/biscuit) [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/usertesting/biscuit?style=for-the-badge)](https://codeclimate.com/github/usertesting/biscuit)
 
+
 This gem is a Ruby wrapper around `@dcoker`'s [biscuit library](https://github.com/dcoker/biscuit), a multi-region HA key-value store for your AWS infrastructure secrets.
 
 By using this Ruby library, it is easy to integrate into a Ruby/Rails stack.
@@ -90,6 +91,14 @@ $ biscuit export -f config/secrets/production.yml | grep "SECRET_KEY"
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+## License
+
+MIT.
+
+Library created by [UserTesting](https://usertesting.com)
+
+![UserTesting](doc/UserTesting.png)
 
 ## Contributing
 
