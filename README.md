@@ -1,5 +1,7 @@
 # Biscuit
 
+![Travis](https://img.shields.io/travis/usertesting/biscuit?style=for-the-badge) ![Coveralls github](https://img.shields.io/coveralls/github/usertesting/biscuit?style=for-the-badge) ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/usertesting/biscuit?style=for-the-badge)
+
 This gem is a Ruby wrapper around `@dcoker`'s [biscuit library](https://github.com/dcoker/biscuit), a multi-region HA key-value store for your AWS infrastructure secrets.
 
 By using this Ruby library, it is easy to integrate into a Ruby/Rails stack.
