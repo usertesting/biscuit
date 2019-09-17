@@ -94,7 +94,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## License
 
-MIT.
+[MIT](LICENSE).
 
 Library created by [UserTesting](https://usertesting.com)
 
