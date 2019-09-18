@@ -85,5 +85,11 @@ describe Biscuit::SecretsDecrypter do
       let(:expected_hash) { Hash["foo" => "1,2,3,4,5"] }
       include_examples "translates exported data correctly"
     end
+
+    context "when the values have a :" do
+      let(:exported_data) { "foo: http://bar.com" }
+      let(:expected_hash) { Hash["foo" => "http://bar.com"] }
+      include_examples "translates exported data correctly"
+    end
   end
 end

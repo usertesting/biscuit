@@ -31,7 +31,7 @@ module Biscuit
     end
 
     def secret_pairs
-      @_secret_pairs ||= secret_lines.map { |line| line.split(":").map(&:strip) }
+      @_secret_pairs ||= secret_lines.map { |line| line.split(":", 2).map(&:strip) }
     end
 
     def secrets
