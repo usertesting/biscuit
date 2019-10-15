@@ -29,5 +29,9 @@ module Biscuit
     def exported
       @_exported ||= Biscuit.run!("export -f '#{secrets_file}'")
     end
+
+    def secret_lines
+      @_secret_lines ||= exported.split("\n").select { |line| line =~ /\S/ }
+    end
   end
 end
