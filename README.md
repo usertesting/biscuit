@@ -86,6 +86,24 @@ $ biscuit put -f config/secrets/production.yml SECRET_KEY "sensitive value"
 $ biscuit export -f config/secrets/production.yml | grep "SECRET_KEY"
 ```
 
+#### A note on parsed values and quoting
+
+Given this unencrypted YAML:
+
+```yaml
+foo: 1,2,3,4,5
+```
+
+You might think that `foo`'s value after being loaded would be `"1,2,3,4,5"`.
+You'd be wrong... Ruby's YAML parser [strips out the commas](https://github.com/ruby/psych/issues/273), sees `12345`, and thinks "ah we have a number!"
+Then the value is `12345`.
+
+If you desire to keep the commas, you'll have to encode it quoted:
+
+```yaml
+foo: "1,2,3,4,5"
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
