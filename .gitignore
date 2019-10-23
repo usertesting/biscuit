@@ -3,7 +3,9 @@
 /Gemfile.lock
 /_yardoc/
 /coverage/
-/doc/
 /pkg/
 /spec/reports/
 /tmp/
+
+# This is downloaded when the gem is installed:
+bin/_biscuit
