@@ -6,8 +6,8 @@ require 'biscuit/version'
 Gem::Specification.new do |spec|
   spec.name          = "biscuit"
   spec.version       = Biscuit::VERSION
-  spec.authors       = ["Suan-Aik Yeo"]
-  spec.email         = ["yeosuanaik@gmail.com"]
+  spec.authors       = ["Suan-Aik Yeo", "Justin Aiken"]
+  spec.email         = ["yeosuanaik@gmail.com", "60tonangel@gmail.com"]
 
   spec.summary       = %q{Ruby wrapper for biscuit (https://github.com/dcoker/biscuit).}
   spec.description   = %q{Ruby wrapper for biscuit (https://github.com/dcoker/biscuit).}
