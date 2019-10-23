@@ -1,3 +1,6 @@
+# 0.1.3
+- No changes - apparently there was already a yanked 0.1.2 out there somewhere
+
 # 0.1.2
 
 - [FIX] Revert to using `YAML.load` to load the secrets
