@@ -12,7 +12,7 @@ end
 def download_file(url)
   filename = URI(url).path.split('/').last
 
-  IO.copy_stream(open(url), "/tmp/#{filename}")
+  IO.copy_stream(URI.open(url), "/tmp/#{filename}")
 
   "/tmp/#{filename}"
 end
