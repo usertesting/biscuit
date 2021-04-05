@@ -1,3 +1,8 @@
+# 0.1.4
+- [FIX] `open()` is deprecated for URIs. Uses `URI.open()`
+- Bumps bundler version
+- Bumps rake gem version
+
 # 0.1.3
 - No changes - apparently there was already a yanked 0.1.2 out there somewhere
 
