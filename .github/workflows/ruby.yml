@@ -1,6 +1,11 @@
 name: Ruby CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - "master"
+      # TEMP
+      - "github-action-setup"
 
 jobs:
   build:
