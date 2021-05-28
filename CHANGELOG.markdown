@@ -1,3 +1,6 @@
+# 0.1.5
+- Update build matrix to include Ruby 3
+
 # 0.1.4
 - [FIX] `open()` is deprecated for URIs. Uses `URI.open()`
 - Bumps bundler version
