@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "master"
+      - "github-workflow-publish-gem"
 
 jobs:
   build:
