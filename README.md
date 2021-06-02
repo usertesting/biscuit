@@ -113,7 +113,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Performing a release
 
 First, go to `lib/biscuit/version.rb` and update the gem to the version you'd like. We follow semantic versioning, if you have questions about this please consult this [document](https://semver.org/).
-After merging the change into the default branch you can go [here](https://github.com/usertesting/biscuit/releases/new) and publish a new release.
+After merging the change into the default branch you can go [here](https://github.com/usertesting/biscuit/releases/new) and publish a new release. Which will automatically push the new version to rubygems.org
 
 ## License
 
