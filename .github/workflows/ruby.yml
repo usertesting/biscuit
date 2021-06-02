@@ -1,12 +1,6 @@
 name: Ruby CI
 
-on:
-  push:
-    branches:
-      - "master"
-      # TEMP
-      - "github-action-setup"
-
+on: [push, pull_request]
 jobs:
   build:
     name: build (${{ matrix.ruby }} / ${{ matrix.os }})
