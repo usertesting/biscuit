@@ -11,10 +11,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Build gemspec
-      - run: gem build biscuit.gemspec
-
       - name: Release Gem
         uses: cadwallion/publish-rubygems-action@master
         env:
