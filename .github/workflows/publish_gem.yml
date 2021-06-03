@@ -18,4 +18,4 @@ jobs:
           GEM_VERSION: 0.1.4
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
-          RELEASE_COMMAND: gem push biscuit-${{env.GEM_VERSION}}.gem
+          RELEASE_COMMAND: gem push biscuit-$GEM_VERSION.gem
