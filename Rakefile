@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'bundler/gem_tasks'
 
 UPSTREAM_VERSION = '0.1.3'
 
@@ -22,9 +23,9 @@ task :default do
   base_release_url = "https://github.com/dcoker/biscuit/releases/download/v#{UPSTREAM_VERSION}/biscuit"
 
   if platform.os == 'darwin' && platform.cpu == 'x86_64'
-    fetch("#{base_release_url}-darwin_amd64.tgz") 
+    fetch("#{base_release_url}-darwin_amd64.tgz")
   elsif platform.os == 'linux' && platform.cpu == 'x86_64'
-    fetch("#{base_release_url}-linux_amd64.tgz") 
+    fetch("#{base_release_url}-linux_amd64.tgz")
   else
     puts "Unsupported platform #{platform}"
   end
