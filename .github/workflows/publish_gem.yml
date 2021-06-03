@@ -9,4 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "$GITHUB_REF"
+      - uses: actions/checkout@v1
+      - name: Release Gem
+      - run: ${{ github.event.inputs.name }}
