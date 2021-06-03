@@ -1,14 +1,20 @@
 name: Publish Gem
+
 on:
-  push:
-    branches:
-      - "master"
-      - "github-workflow-publish-gem-test"
+  release:
+    types:
+      - published
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Print GitHub event name
-        run: |
-          echo "${{ github.event_name }}"
+      - uses: actions/checkout@v2
+
+      - name: Release Gem
+        if: github.event_name == "release"
+        uses: cadwallion/publish-rubygems-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
