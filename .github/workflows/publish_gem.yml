@@ -12,7 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Release Gem
-        if: contains(github.ref, 'refs/tags/v')
         run: |
           echo "Setting up gem credentials..."
           set +x
