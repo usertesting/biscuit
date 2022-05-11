@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'bundler/gem_tasks'
 
-UPSTREAM_VERSION = '0.1.3'
+UPSTREAM_VERSION = '0.1.4'
 
 def fetch(release_url)
   tgz_path = download_file(release_url)
