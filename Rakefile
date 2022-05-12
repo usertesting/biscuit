@@ -4,6 +4,7 @@ require 'bundler/gem_tasks'
 UPSTREAM_VERSION = '0.1.4'
 
 def fetch(release_url)
+  puts "Fetching native biscuit executable: #{release_url}"
   tgz_path = download_file(release_url)
 
   system("tar -xzf #{tgz_path} -C #{File.dirname(tgz_path)}") || raise
