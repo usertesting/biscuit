@@ -21,12 +21,13 @@ end
 
 task :default do
   platform = Gem::Platform.local
-  base_release_url = "https://github.com/dcoker/biscuit/releases/download/v#{UPSTREAM_VERSION}/biscuit"
+  base_release_url = 
+    "https://github.com/dcoker/biscuit/releases/download/v#{UPSTREAM_VERSION}/biscuit_#{UPSTREAM_VERSION}_"
 
-  if platform.os == 'darwin' && platform.cpu == 'x86_64'
-    fetch("#{base_release_url}-darwin_amd64.tgz")
+  if platform.os == 'darwin'
+    fetch("#{base_release_url}MacOS-all.tgz")
   elsif platform.os == 'linux' && platform.cpu == 'x86_64'
-    fetch("#{base_release_url}-linux_amd64.tgz")
+    fetch("#{base_release_url}Linux-64bit.tar.gz")
   else
     puts "Unsupported platform #{platform}"
   end
