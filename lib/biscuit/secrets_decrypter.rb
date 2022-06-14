@@ -5,7 +5,7 @@ module Biscuit
     attr_reader :secrets_file
 
     def initialize(secrets_file)
-      fail "#{secrets_file} is not found" unless File.exists? secrets_file
+      fail "#{secrets_file} is not found" unless File.exist? secrets_file
 
       @secrets_file = secrets_file
     end

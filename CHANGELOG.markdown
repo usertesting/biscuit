@@ -1,3 +1,8 @@
+# 0.2.0
+- [FIX] Resolve File.exists? deprecation removal in latest Ruby.
+- Bump upstream biscuit binary dependency to latest 0.1.4 release.
+- Adds diagnostic logging to install task.
+
 # 0.1.4
 - [FIX] `open()` is deprecated for URIs. Uses `URI.open()`
 - Bumps bundler version
