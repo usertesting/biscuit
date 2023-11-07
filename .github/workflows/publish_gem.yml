@@ -1,17 +1,29 @@
-name: Publish Gem
+name: Publish Public Gem
 
 on:
   release:
-    types:
-      - published
+    types: [published]
 
 jobs:
   build:
+    name: Build + Publish
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
     steps:
-      - uses: actions/checkout@v1
-      - name: Release Gem
-        uses: cadwallion/publish-rubygems-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RUBYGEMS_API_KEY: ${{secrets.RUBYGEMS_API_KEY}}
+    - uses: actions/checkout@v4
+    - uses: actions/setup-ruby@v1
+    - name: Publish to Github
+      run: |
+        mkdir -p $HOME/.gem
+        touch $HOME/.gem/credentials
+        chmod 0600 $HOME/.gem/credentials
+        printf -- "---\n:github: Bearer ${GH_PACKAGES_TEMP_TOKEN}\n" > $HOME/.gem/credentials
+        gem build *.gemspec
+        gem push --verbose --key github --host https://rubygems.pkg.github.com/${OWNER} *.gem
+      env:
+        GH_PACKAGES_TEMP_TOKEN: ${{ secrets.GH_PACKAGES_TEMP_TOKEN }}
+        OWNER: ${{ github.repository_owner }}
+      continue-on-error: true
