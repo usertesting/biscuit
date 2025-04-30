@@ -1,3 +1,7 @@
+> # Archival Notice
+> 
+> This repository will no longer be maintained by UserTesting, and will be archived in the near future. The most recent version of this gem will still be published and available to use. Thank you to everyone who contributed to this project!
+
 # Biscuit
 
 [![Travis](https://img.shields.io/travis/usertesting/biscuit?style=for-the-badge)](https://travis-ci.org/usertesting/biscuit) [![Coveralls github](https://img.shields.io/coveralls/github/usertesting/biscuit?style=for-the-badge)](https://coveralls.io/github/usertesting/biscuit) [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/usertesting/biscuit?style=for-the-badge)](https://codeclimate.com/github/usertesting/biscuit)
